@@ -108,6 +108,20 @@
     };
 
     var body = "<%= escape_javascript(data.to_s.html_safe) %>";
+
+    var container = document.getElementById('<%= container_id %>');
+
+    if(container && (extraParams = container.dataset.asyncExtraParams)) {
+      extraParams = JSON.parse(extraParams)
+
+      var params = new URLSearchParams();
+
+      for(k in extraParams)
+        params.append(k, extraParams[k]);
+
+      body = params;
+    }
+
     request.send(body);
   };
 
