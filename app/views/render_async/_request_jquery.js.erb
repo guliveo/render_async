@@ -53,7 +53,7 @@ if (window.jQuery) {
 
       var asyncContainer = $("#<%= container_id %>");
 
-      if(asyncContainer && (extraParams = asyncContainer[0].dataset.asyncExtraParams)) {
+      if(asyncContainer && asyncContainer[0].dataset && (extraParams = asyncContainer[0].dataset.asyncExtraParams)) {
         data = JSON.parse(extraParams);
       }
 
