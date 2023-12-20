@@ -49,10 +49,18 @@ if (window.jQuery) {
       }
       <% end %>
 
+      var data = "<%= escape_javascript(data.to_s.html_safe) %>";
+
+      var asyncContainer = $("#<%= container_id %>");
+
+      if(asyncContainer && (extraParams = asyncContainer[0].dataset.asyncExtraParams)) {
+        data = JSON.parse(extraParams);
+      }
+
       $.ajax({
         url: '<%= path.html_safe %>',
         method: '<%= method %>',
-        data: "<%= escape_javascript(data.to_s.html_safe) %>",
+        data: data,
         headers: headers
       }).done(function(response) {
         var container = $("#<%= container_id %>");

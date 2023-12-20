@@ -112,7 +112,7 @@
     var container = document.getElementById('<%= container_id %>');
 
     if(container && (extraParams = container.dataset.asyncExtraParams)) {
-      extraParams = JSON.parse(extraParams)
+      extraParams = JSON.parse(extraParams);
 
       var params = new URLSearchParams();
 
