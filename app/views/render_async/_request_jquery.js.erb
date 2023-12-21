@@ -198,7 +198,7 @@ if (window.jQuery) {
     }
 
     _runAfterDocumentLoaded(_setUpToggle);
-    <% elsif !toggle %>
+    <% elsif !toggle && start %>
     _runAfterDocumentLoaded(_renderAsyncFunction)
     <% end %>
   }(jQuery));

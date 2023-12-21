@@ -29,6 +29,7 @@ module RenderAsync
                                           **error_handling_options(options),
                                           **retry_options(options),
                                           **polling_options(options),
+                                          **start_options(options),
                                           **content_for_options(options)
     end
 
@@ -71,6 +72,16 @@ module RenderAsync
     def polling_options(options)
       { interval: options[:interval],
         toggle: options[:toggle] }
+    end
+
+    def start_options(options)
+      set_options = {
+        start: options[:start]
+      }
+
+      set_options[:start] = true if set_options[:start].nil?
+
+      set_options
     end
 
     def content_for_options(options)
