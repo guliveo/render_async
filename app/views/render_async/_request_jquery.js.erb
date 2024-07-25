@@ -195,6 +195,14 @@ if (window.jQuery) {
       <% if toggle[:start] %>
       _renderAsyncFunction()
       <% end %>
+
+      <% if toggle[:start_condition] %>
+          var container = $("#<%= container_id %>");
+
+          if (container && container.closest("<%= toggle[:start_condition] %>").length) {
+            _renderAsyncFunction();
+          }
+      <% end %>
     }
 
     _runAfterDocumentLoaded(_setUpToggle);
